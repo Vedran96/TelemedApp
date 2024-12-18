@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telemed App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<!-- Login Page -->
+<div class="container mt-5" id="loginPage">
+  <h1 class="text-center">Telemed</h1>
+  <h3 class="text-center">Log in</h3>
+  <div class="mt-4">
+    <form id="loginForm">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" class="form-control" id="password" placeholder="password" required>
+      </div>
+      <p class="text-danger" id="errorMessage" style="display: none;">Wrong email or password</p>
+      <button type="button" class="btn btn-primary w-100" onclick="handleLogin()">Login</button>
+    </form>
+  </div>
+</div>
+
+<!-- Doctor Dashboard -->
+<div class="container mt-5 d-none" id="doctorDashboard">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Doctor Dashboard</h1>
+    <div>
+      <span>Doctor</span> |
+      <a href="#" onclick="logout()">Log out</a>
+    </div>
+  </div>
+  <button class="btn btn-primary my-3" onclick="showAddPatientPage()">Add New Patient</button>
+  <table class="table table-bordered">
+    <thead class="table">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>SYS</th>
+      <th>DIA</th>
+      <th>View Details</th>
+    </tr>
+    </thead>
+    <tbody id="patientsTable">
+    <!-- Patients will be dynamically added here -->
+    </tbody>
+  </table>
+</div>
+
+<!-- Add New Patient Page -->
+<div class="container mt-5 d-none" id="addPatientPage">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Doctor Dashboard</h1>
+    <div>
+      <span>Doctor</span> |
+      <a href="#" onclick="logout()">Log out</a>
+    </div>
+  </div>
+  <form id="patientForm">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name:</label>
+      <input type="text" class="form-control" id="firstName" required>
+    </div>
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Last Name:</label>
+      <input type="text" class="form-control" id="lastName" required>
+    </div>
+    <div class="mb-3">
+      <label for="sys" class="form-label">Systolic Blood Pressure (mmHg):</label>
+      <input type="number" class="form-control" id="sys" required>
+    </div>
+    <div class="mb-3">
+      <label for="dia" class="form-label">Diastolic Blood Pressure (mmHg):</label>
+      <input type="number" class="form-control" id="dia" required>
+    </div>
+    <button type="button" class="btn btn-success w-100" onclick="addPatient()">Submit</button>
+  </form>
+</div>
+
+<!-- Patient Details Page -->
+<div class="container mt-5 d-none" id="patientDetailsPage">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Telemed</h1>
+    <div>
+      <span>Doctor</span> |
+      <a href="#" onclick="logout()">Log out</a>
+    </div>
+  </div>
+  <div class="my-4">
+    <h3>Patient Info:</h3>
+    <p><strong>Full Name:</strong> <span id="detailsName"></span></p>
+    <p><strong>Gender:</strong> <span id="detailsGender">m/f</span></p>
+    <p><strong>Age:</strong> <span id="detailsAge">60</span></p>
+    <p><strong>Condition at First Visit:</strong> <span id="detailsCondition">Initial medical examination</span></p>
+  </div>
+  <h3>Records:</h3>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Systolic Blood Pressure</th>
+      <th>Diastolic Blood Pressure</th>
+      <th>Heart Rate</th>
+      <th>Description</th>
+    </tr>
+    </thead>
+    <tbody id="detailsRecords">
+    <!-- Patient records will be dynamically added here -->
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-between">
+    <button class="btn btn-secondary mt-3" onclick="returnToDashboard()">Back to Dashboard</button>
+  </div>
+</div>
+<!-- Patient Dashboard -->
+<div class="container mt-5 d-none" id="recordsPage">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Telemed</h1>
+    <div>
+      <span>Patient</span> |
+      <a href="#" onclick="logout()">Log out</a>
+    </div>
+  </div>
+  <button class="btn btn-primary my-3" onclick="showAddRecordPage()">Add New Record</button>
+  <table class="table table-bordered">
+    <thead class="table">
+    <tr>
+      <th>Date</th>
+      <th>Systolic Blood Pressure</th>
+      <th>Diastolic Blood Pressure</th>
+      <th>Heart Rate</th>
+      <th>Description</th>
+    </tr>
+    </thead>
+    <tbody id="recordsTable">
+    <!-- Records will be dynamically added here -->
+    </tbody>
+  </table>
+</div>
+<!-- Add New Record Page -->
+<div class="container mt-5 d-none" id="addRecordPage">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Telemed</h1>
+    <div>
+      <span>Patient</span> |
+      <a href="#" onclick="logout()">Log out</a>
+    </div>
+  </div>
+  <form id="recordForm">
+    <div class="mb-3">
+      <label for="systolic" class="form-label">Systolic Blood Pressure (mmHg):</label>
+      <input type="number" class="form-control" id="systolic" required>
+    </div>
+    <div class="mb-3">
+      <label for="diastolic" class="form-label">Diastolic Blood Pressure (mmHg):</label>
+      <input type="number" class="form-control" id="diastolic" required>
+    </div>
+    <div class="mb-3">
+      <label for="heartRate" class="form-label">Heart Rate (bpm):</label>
+      <input type="number" class="form-control" id="heartRate" required>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Short Description:</label>
+      <textarea class="form-control" id="description" rows="3"></textarea>
+    </div>
+    <button type="button" class="btn btn-success w-100" onclick="addRecord()">Submit</button>
+  </form>
+</div>
+<script src="functions.js"></script>
+</body>
+</html>
