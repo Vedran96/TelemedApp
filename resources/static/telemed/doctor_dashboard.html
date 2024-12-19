@@ -8,28 +8,39 @@
 </head>
 <body>
 <div class="container mt-5" id="doctorDashboard">
-  <div class="d-flex justify-content-between align-items-center">
-    <h1>Doctor Dashboard</h1>
-    <div>
-      <span>Doctor</span> |
-      <a href="#" onclick="logout()">Log out</a>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <!-- Header -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Doctor Dashboard</h1>
+        <div>
+          <span>Doctor</span> |
+          <a href="#" onclick="logout()">Log out</a>
+        </div>
+      </div>
+      <!-- Button -->
+      <div class="text-left">
+        <button class="btn btn-primary my-3" onclick="showAddPatientPage()">Add New Patient</button>
+      </div>
+      <!-- Centered Table -->
+      <div class="table-responsive">
+        <table class="table table-bordered table" style="max-width: 600px;">
+          <thead class="table-light">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>SYS</th>
+            <th>DIA</th>
+            <th>View Details</th>
+          </tr>
+          </thead>
+          <tbody id="patientsTable">
+          <!-- Patients will be dynamically added here -->
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-  <button class="btn btn-primary my-3" onclick="showAddPatientPage()">Add New Patient</button>
-  <table class="table table-bordered">
-    <thead class="table">
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>SYS</th>
-      <th>DIA</th>
-      <th>View Details</th>
-    </tr>
-    </thead>
-    <tbody id="patientsTable">
-    <!-- Patients will be dynamically added here -->
-    </tbody>
-  </table>
 </div>
 <script src="functions.js"></script>
 </body>
