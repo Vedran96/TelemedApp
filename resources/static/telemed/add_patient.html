@@ -18,27 +18,23 @@
         </div>
       </div>
       <form id="patientForm">
-        <div class="row mb-3">
-          <div class="col-md-6">
-            <label for="firstName" class="form-label">First Name:</label>
-            <input type="text" class="form-control" id="firstName" required>
-          </div>
-          <div class="col-md-6">
-            <label for="lastName" class="form-label">Last Name:</label>
-            <input type="text" class="form-control" id="lastName" required>
-          </div>
+        <div class="mb-3">
+          <label for="firstName" class="form-label">First Name:</label>
+          <input type="text" class="form-control" id="firstName" required>
         </div>
-        <div class="row mb-3">
-          <div class="col-md-6">
-            <label for="sys" class="form-label">Systolic Blood Pressure (mmHg):</label>
-            <input type="number" class="form-control" id="sys" required>
-          </div>
-          <div class="col-md-6">
-            <label for="dia" class="form-label">Diastolic Blood Pressure (mmHg):</label>
-            <input type="number" class="form-control" id="dia" required>
-          </div>
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Last Name:</label>
+          <input type="text" class="form-control" id="lastName" required>
         </div>
-        <div class="text-center">
+        <div class="mb-3">
+          <label for="sys" class="form-label">Systolic Blood Pressure (mmHg):</label>
+          <input type="number" class="form-control" id="sys" required>
+        </div>
+        <div class="mb-3">
+          <label for="dia" class="form-label">Diastolic Blood Pressure (mmHg):</label>
+          <input type="number" class="form-control" id="dia" required>
+        </div>
+        <div class="text-left">
           <button type="button" class="btn btn-success w-50" onclick="addPatient()">Submit</button>
         </div>
       </form>
